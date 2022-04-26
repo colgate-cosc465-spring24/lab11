@@ -30,12 +30,14 @@ The `fetch` function needs to use Python [`requests` library](https://docs.pytho
 
 The `fetch` function must also introduce artificial transmission delay based on the `bandwidth` and content length. First, obtain the content, then use [`time.sleep`](https://docs.python.org/3/library/time.html#time.sleep) to simulate transmission delay before returning the content from the `fetch` function.
 
+Run `python3 ./test_fetch.py` to test your fetch function.
+
 ## Part 2: `fill_from_network`
 Your second task is to complete the `fill_from_network` function. This function needs to use the `fetch` function you completed in Part 1 to request video segments and add them to the provided `buffer`. 
 
-There are three different video resolutions to choose from: `320x180`, `640x360`, and `854x480`. You should fetch a `320x180` resolution segment if the buffer contains less than 5 seconds of video data, a `640x360` resolution segment if the buffer contains less than 10 seconds of video data, and a `854x480` resolution segment if the video buffer contains 10 or more seconds of video data.
+Each video segment contains 2 seconds of video. Segments are numbered sequentially, starting from `1`. You should fetch segments until no more segments are available. 
 
-Segments are numbered sequentially, starting from `1`. You should fetch segments until no more segments are available. 
+There are three different video resolutions to choose from: `320x180`, `640x360`, and `854x480`. You should fetch a `320x180` resolution segment if the buffer contains less than 5 seconds of video data, a `640x360` resolution segment if the buffer contains less than 10 seconds of video data, and a `854x480` resolution segment if the video buffer contains 10 or more seconds of video data.
 
 ## Part 3: `player`
 Your final task is to complete the `player` function. 
