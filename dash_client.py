@@ -98,8 +98,8 @@ def pause_to_buffer(buffer, threshold):
     buffer._player.set_pause(False)
 
 '''Fill the buffer from the network'''
-def fill_from_network(buffer, base_url='http://picard.cs.colgate.edu/dash/bbb_'):
-    data = fetch(base_url, '320x180', 'init')
+def fill_from_network(buffer, bandwidth, base_url='http://picard.cs.colgate.edu/dash/bbb_'):
+    data = fetch(base_url, '320x180', 'init', bandwidth)
     if data is not None:
         buffer.add_segment(data, 0)
     else:
@@ -108,9 +108,9 @@ def fill_from_network(buffer, base_url='http://picard.cs.colgate.edu/dash/bbb_')
     # TODO: Fetch all 30 segments, using buffer occupany to determine resolution
 
 '''Fetch a video segment'''
-def fetch(base_url, resolution, segment):
+def fetch(base_url, resolution, segment, bandwidth):
     # URL to fetch
-    url = base_url+resolution+segment+"."+("mp4" if segment=="init" else "m4s")
+    url = base_url+resolution+str(segment)+"."+("mp4" if segment=="init" else "m4s")
     
     # TODO: Issue request and simulate transmission delay based on bandwidth
     return None
@@ -121,15 +121,11 @@ def main():
         help='Bandwidth in Kbps (default: 500)')
     args = parser.parse_args()
 
-    # Store bandwidth setting
-    global bandwidth
-    bandwidth = args.bandwidth / 8 * 1000
-
     # Create buffer
     buffer = Buffer() 
 
     # Start filling buffer
-    filler = threading.Thread(target=fill_from_network, args=[buffer])
+    filler = threading.Thread(target=fill_from_network, args=[buffer, args.bandwidth])
     filler.start()
 
     # Run video player

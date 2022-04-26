@@ -28,7 +28,7 @@ Your first task is to complete the `fetch` function.
 
 The `fetch` function needs to use Python [`requests` library](https://docs.python-requests.org/en/latest/) to issue an HTTP **GET** request for the `url` and return the **binary** response. The function should return `None` if an HTTP error occurs.
 
-The `fetch` function must also introduce artificial transmission delay based on the configured `bandwidth` and content length. First, obtain the content, then use [`time.sleep`](https://docs.python.org/3/library/time.html#time.sleep) to simulate transmission delay before returning the content from the `fetch` function.
+The `fetch` function must also introduce artificial transmission delay based on the `bandwidth` and content length. First, obtain the content, then use [`time.sleep`](https://docs.python.org/3/library/time.html#time.sleep) to simulate transmission delay before returning the content from the `fetch` function.
 
 ## Part 2: `fill_from_network`
 Your second task is to complete the `fill_from_network` function. This function needs to use the `fetch` function you completed in Part 1 to request video segments and add them to the provided `buffer`. 
