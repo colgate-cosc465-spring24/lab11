@@ -13,7 +13,7 @@ Clone your repository on **your own Mac laptop** or a **department-owned Mac lap
 
 Install the necessary Python packages:
 ```bash
-pip3 install cv2 ffpyplayer numpy requests
+pip3 install opencv-python ffpyplayer numpy requests
 ```
 
 To run the video streaming client, run:
@@ -30,7 +30,7 @@ The `fetch` function needs to use Python [`requests` library](https://docs.pytho
 
 The `fetch` function must also introduce artificial transmission delay based on the `bandwidth` and content length. First, obtain the content, then use [`time.sleep`](https://docs.python.org/3/library/time.html#time.sleep) to simulate transmission delay before returning the content from the `fetch` function.
 
-Run `python3 ./test_fetch.py` to test your fetch function.
+Run `python3 ./test_fetch.py` to test your `fetch` function.
 
 ## Part 2: `fill_from_network`
 Your second task is to complete the `fill_from_network` function. This function needs to use the `fetch` function you completed in Part 1 to request video segments and add them to the provided `buffer`. 
