@@ -98,7 +98,7 @@ def pause_to_buffer(buffer, threshold):
     buffer._player.set_pause(False)
 
 '''Fill the buffer from the network'''
-def fill_from_network(buffer, bandwidth, base_url='http://picard.cs.colgate.edu/dash/bbb_'):
+def fill_from_network(buffer, bandwidth, base_url='http://riker.cs.colgate.edu/dash/bbb_'):
     data = fetch(base_url, '320x180', 'init', bandwidth)
     if data is not None:
         buffer.add_segment(data, 0)
@@ -110,7 +110,7 @@ def fill_from_network(buffer, bandwidth, base_url='http://picard.cs.colgate.edu/
 '''Fetch a video segment'''
 def fetch(base_url, resolution, segment, bandwidth):
     # URL to fetch
-    url = base_url+resolution+str(segment)+"."+("mp4" if segment=="init" else "m4s")
+    url = base_url+resolution+'_'+str(segment)+"."+("mp4" if segment=="init" else "m4s")
     
     # TODO: Issue request and simulate transmission delay based on bandwidth
     return None

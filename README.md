@@ -1,4 +1,4 @@
-# Lab 09: Video streaming client
+# Lab 11: Video streaming client
 
 ## Overview
 In this lab, you will implement a Dynamic Adaptive Streaming over HTTP (DASH) client. 
